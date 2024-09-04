@@ -1,15 +1,9 @@
-.msgGreen {
-    background-color: #009688;
-}
-
-.msgWhite {
-    background-color: white;
-}
-
-/* main */
-
+/* 
+main 
+*/
 main {
-    background-color: #009688;
+    background: rgb(0, 150, 136);
+    background: linear-gradient(180deg, rgba(0, 150, 136, 1) 15%, rgba(219, 219, 211, 1) 15%);
     height: 100vh;
 }
 
@@ -17,7 +11,7 @@ main {
     background-color: #EAEAEA;
     height: 95%;
     width: 90%;
-    padding: 0;
+    /* padding: 0; */
 }
 
 .row {
@@ -37,23 +31,23 @@ header i {
     color: #B1B1B1;
 }
 
-/* notifica */
+/* 
+notifica 
+*/
 
 .notify {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
     color: #8fdafc;
-    background-color: white;
 }
 
 .notify-container {
     background-color: #8fdafc;
 }
 
-/* lista chat */
+/* 
+contatti 
+*/
 
-.chat-container {
+.contact-container {
     height: 100%;
 }
 
@@ -63,4 +57,22 @@ header i {
 
 .chat .text-body-tertiary {
     font-size: small;
+}
+
+/* 
+chat 
+*/
+
+.last-msg {
+    font-size: 0.8rem;
+}
+
+.chat-container {
+    padding: 30px;
+    background-image: url('../img/mine.jpg');
+}
+
+.msg-sent {
+    display: flex;
+    justify-content: end;
 }
