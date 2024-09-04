@@ -10,8 +10,6 @@
     <!-- bs -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- bs icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- fontawesome icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
@@ -25,6 +23,7 @@
 <body>
 
     <main class="d-flex align-items-center">
+
         <div id="app" class="container p-0 shadow-lg">
 
             <div class="row g-0">
@@ -76,22 +75,40 @@
                     <!-- contacts -->
                     <section class="contact-container bg-white">
 
-                        <!-- prima chat esempio -->
-                        <section class="active p-3 d-flex justify-content-between border-bottom">
+                        <!-- chat con v-for per ciclare tutti i contatti -->
+                        <!-- click per cambiare l'indice attivo -->
+                        <!-- v-bind per aggiungere la classe sulla base dell'indice attivo (con operatore ternario) -->
+                        <section v-for="(contact, index) in contacts" @click="activeContactI = index"
+                            v-bind:class=" index==activeContactI ? 'active' : '' "
+                            class="p-3 d-flex justify-content-between border-bottom">
+
                             <!-- icona -->
                             <div class="d-flex align-items-center">
+
                                 <span class="text-center d-inline-block me-3">
-                                    <img src="./img/avatar_1.jpg" class="rounded-circle" alt="Michele">
+                                    <!-- v-bind per collegare l'istanza vue (immagine e alt) all'attributo html -->
+                                    <img v-bind:src="contact.avatar" class="rounded-circle" v-bind:alt="contact.name">
                                 </span>
-                                <!-- testo -->
+
+                                <!-- Nome + messaggio inviato -->
                                 <span class="d-inline-block">
-                                    Michele
-                                    <div class="text-body-tertiary last-msg"> Ultimo messaggio inviato </div>
+
+                                    <!-- text interpolation per aggiungere nome contatto -->
+                                    {{contact.name}}
+
+                                    <div class="text-body-tertiary last-msg">
+                                        Ultimo messaggio inviato
+                                    </div>
+
                                 </span>
+
                             </div>
+
+                            <!-- orario -->
                             <div class="text-body-tertiary last-msg">
                                 12.00
                             </div>
+
                         </section>
 
                     </section>
@@ -128,7 +145,7 @@
                     <!-- chat -->
                     <main class="chat-container">
 
-                        <!-- dx -->
+                        <!-- sx - ricevuto -->
                         <div class="d-block">
                             <div class="talk-bubble tri-right round border left-top received shadow-sm">
                                 <div class="talktext">
@@ -138,7 +155,7 @@
                             </div>
                         </div>
 
-                        <!-- sx -->
+                        <!-- dx - inviato -->
                         <div class="d-flex justify-content-end">
                             <div class="talk-bubble tri-right round border right-top sent shadow-sm">
                                 <div class="talktext">
@@ -151,6 +168,7 @@
                     </main>
 
                 </div>
+
             </div>
 
         </div>
