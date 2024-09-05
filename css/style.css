@@ -106,11 +106,6 @@ chat
     overflow-y: auto;
 }
 
-.msg-sent {
-    display: flex;
-    justify-content: end;
-}
-
 .col main {
     overflow-y: hidden;
 }

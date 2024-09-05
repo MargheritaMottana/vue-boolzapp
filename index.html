@@ -139,7 +139,7 @@
                                 <!-- text interpolation per prendere il nome in base all'indice attivo -->
                                 {{ contacts[activeContactI].name }}
                                 <div class="text-body-tertiary last-msg">
-                                    Ultimo messaggio oggi alle
+                                    Ultimo messaggio oggi alle 12.00
                                 </div>
                             </span>
                         </span>
@@ -167,25 +167,44 @@
                          'classe-sent': message.status == 'sent'
                          'classe-ricevuto': message.status == 'received'}" -->
 
-                        <div class="d-block" v-for="(msg, index) in contacts[activeContactI].messages">
+                        <!-- <div class="d-block" v-for="(msg, index) in contacts[activeContactI].messages">
                             <div class="talk-bubble tri-right round border left-top received shadow-sm">
                                 <div class="talktext">
                                     <p> {{msg.message}} </p>
-                                    <p class="h"> {{msg.date}} <i class="fa-solid fa-check"></i>
+                                    <p class="h">
+                                        {{msg.date}}
+                                        <i class="fa-solid fa-check"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="d-block" :class="{'d-flex justify-content-end': msg.status == 'sent'}"
+                            v-for="(msg, index) in contacts[activeContactI].messages">
+
+                            <div class="talk-bubble shadow-sm round" :class="{
+                                'received tri-right border tri-right left-top': msg.status == 'sent',
+                                'sent tri-right border tri-right right-top': msg.status == 'received'
+                            }">
+                                <div class="talktext">
+                                    <p> {{msg.message}} </p>
+                                    <p class="h">
+                                        {{msg.date}}
+                                        <i class="fa-solid fa-check"></i>
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- dx - inviato -->
-                        <div class="d-flex justify-content-end">
+                        <!-- <div class="d-flex justify-content-end">
                             <div class="talk-bubble tri-right round border right-top sent shadow-sm">
                                 <div class="talktext">
                                     <p> Hello (: </p>
-                                    <p class="h"> 12.00 </p>
+                                    <p class="h"> </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </main>
 

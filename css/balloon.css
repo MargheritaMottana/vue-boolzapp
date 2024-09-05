@@ -7,12 +7,12 @@
     margin-bottom: 10px;
 }
 
-.received {
+.sent {
     background-color: #FFFFFF;
     margin-left: 40px;
 }
 
-.sent {
+.received {
     background-color: #D5F9BA;
     margin-right: 40px;
 }
@@ -44,43 +44,12 @@
 
 /* 
 
----------------- SENT -------------------
+---------------- RECEIVED -------------------
 
 */
 
-/* Right triangle placed top right flush. */
-.tri-right.border.right-top:before {
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: auto;
-    right: -40px;
-    top: -8px;
-    bottom: auto;
-    border-color: #D5F9BA transparent transparent transparent;
-}
-
-.tri-right.right-top:after {
-    content: ' ';
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: auto;
-    right: -20px;
-    top: 0px;
-    bottom: auto;
-    border: 20px solid;
-    border-color: #D5F9BA transparent transparent transparent;
-}
-
-/* 
-
--------------- RECEIVED ---------------
-
-*/
-
-/* Left triangle placed top right flush. */
-.tri-right.border.left-top:before {
+/* Right triangle placed top left flush. */
+.tri-left.border.left-top:before {
     position: absolute;
     width: 0;
     height: 0;
@@ -91,7 +60,7 @@
     border-color: #FFFFFF transparent transparent transparent;
 }
 
-.tri-right.left-top:after {
+.tri-right.right-top:after {
     content: ' ';
     position: absolute;
     width: 0;
@@ -102,4 +71,35 @@
     bottom: auto;
     border: 20px solid;
     border-color: #FFFFFF transparent transparent transparent;
+}
+
+/* 
+
+-------------- SENT ---------------
+
+*/
+
+/* Left triangle placed top right flush. */
+.tri-right.border.left-top:before {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -40px;
+    top: -8px;
+    bottom: auto;
+    border-color: #D5F9BA transparent transparent transparent;
+}
+
+.tri-right.left-top:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: -20px;
+    top: 0px;
+    bottom: auto;
+    border: 20px solid;
+    border-color: #D5F9BA transparent transparent transparent;
 }
