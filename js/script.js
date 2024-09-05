@@ -176,7 +176,7 @@ createApp({
                 }
             ],
 
-            // aggiunto indice contatto attivo per poterlo cambiare con il click
+            // indice contatto attivo per poterlo cambiare con il click
             activeContactI: 0,
 
         }
