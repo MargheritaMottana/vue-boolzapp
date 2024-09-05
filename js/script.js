@@ -199,12 +199,20 @@ createApp({
                     date: this.nowDate(),
                     message: this.inputMsg,
                     status: 'sent'
-                })
+                });
 
                 // alla fine svuoto l'input
                 this.inputMsg = ''
-            }
 
+                // ricevo una risposta dopo un secondo
+                setTimeout(() => {
+                    this.contacts[this.activeContactI].messages.push({
+                        date: this.nowDate(),
+                        message: 'Ok (:',
+                        status: 'received'
+                    });
+                }, 1000);
+            }
         },
 
         // funzione per ottenere la data corrente
