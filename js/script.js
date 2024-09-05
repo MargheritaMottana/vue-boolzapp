@@ -10,6 +10,7 @@ Milestone 1
 const { createApp } = Vue
 
 createApp({
+
     data() {
         return {
             contacts: [
@@ -179,6 +180,32 @@ createApp({
             // indice contatto attivo per poterlo cambiare con il click
             activeContactI: 0,
 
+            // messaggio dell'input per poterlo pushare all'interno dei messaggi della chat del contatto attivo
+            inputMsg: '',
+
+        }
+    },
+
+    methods: {
+        send() {
+            /* 
+            se il messaggio scritto e trimmato (a cui tolgo spazi prima e dopo le parole), 
+            è diverso da zero
+            */
+            if (this.inputMsg.trim() != 0) {
+
+                // allora pusho il messaggio nell'oggetto
+                this.contacts[this.activeContactI].messages.push({
+                    date: '',
+                    message: this.inputMsg,
+                    status: 'sent'
+                })
+
+                // alla fine svuoto l'input
+                this.inputMsg = ''
+            }
+
         }
     }
+
 }).mount('#app')

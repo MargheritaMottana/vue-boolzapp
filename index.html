@@ -79,7 +79,7 @@
                     <section class="contact-container bg-white">
 
                         <!-- chat con v-for per ciclare tutti i contatti -->
-                        <!-- click per cambiare l'indice attivo -->
+                        <!-- v-on (click) per cambiare l'indice attivo -->
                         <!-- v-bind per aggiungere la classe sulla base dell'indice attivo (con operatore ternario) -->
                         <section v-for="(contact, index) in contacts" @click="activeContactI = index"
                             v-bind:class=" index==activeContactI ? 'active' : '' "
@@ -155,37 +155,17 @@
                     <!-- chat -->
                     <main class="chat-container">
 
-                        <!-- sx - ricevuto -->
-
-                        <!-- aggiungere v-bind per decretare ricevuto o inviato tipo:
-
-                         :class="msg.status"
-                         
-                        oppure
-
-                         :class="{
-                         'classe-sent': message.status == 'sent'
-                         'classe-ricevuto': message.status == 'received'}" -->
-
-                        <!-- <div class="d-block" v-for="(msg, index) in contacts[activeContactI].messages">
-                            <div class="talk-bubble tri-right round border left-top received shadow-sm">
-                                <div class="talktext">
-                                    <p> {{msg.message}} </p>
-                                    <p class="h">
-                                        {{msg.date}}
-                                        <i class="fa-solid fa-check"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div> -->
-
+                        <!-- contenitore messaggio -->
+                        <!-- occupa tutta la riga per poter esser spostato a dx in base allo status -->
                         <div class="d-block" :class="{'d-flex justify-content-end': msg.status == 'sent'}"
                             v-for="(msg, index) in contacts[activeContactI].messages">
 
+                            <!-- balloon messaggio -->
                             <div class="talk-bubble shadow-sm round" :class="{
                                 'received tri-right border tri-right left-top': msg.status == 'sent',
-                                'sent tri-right border tri-right right-top': msg.status == 'received'
-                            }">
+                                'sent tri-right border tri-right right-top': msg.status == 'received' }">
+
+                                <!-- testo messaggio -->
                                 <div class="talktext">
                                     <p> {{msg.message}} </p>
                                     <p class="h">
@@ -193,28 +173,24 @@
                                         <i class="fa-solid fa-check"></i>
                                     </p>
                                 </div>
+
                             </div>
                         </div>
 
-                        <!-- dx - inviato -->
-                        <!-- <div class="d-flex justify-content-end">
-                            <div class="talk-bubble tri-right round border right-top sent shadow-sm">
-                                <div class="talktext">
-                                    <p> Hello (: </p>
-                                    <p class="h"> </p>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </main>
 
+                    <!-- input -->
                     <section class="p-2 d-flex align-items-center chat-input">
                         <!-- icona emoji -->
                         <i class="fa-regular fa-face-grin-stars m-3 me-4 fs-4"></i>
+
                         <!-- input -->
-                        <input type="text" class="form-control">
+                        <!-- v-model per creare una connesione bidirezionale tra input e variabile -->
+                        <!-- keyup per inteccettare l'evento della digitazione (in questo caso quello del tasto "enter")-->
+                        <input v-model="inputMsg" @keyup.enter="send()" type="text" class="form-control">
+
                         <!-- icona mic -->
-                        <!-- se riesc, mostrarne una alla volta in base all'input -->
+                        <!-- se riesco, mostrarne una alla volta in base all'input -->
                         <i class="fa-solid fa-microphone m-3 ms-4 fs-4 "></i>
                         <!-- <i class="fa-solid fa-paper-plane ms-4 fs-4"></i> -->
                     </section>
@@ -224,6 +200,7 @@
             </div>
 
         </div>
+
     </main>
 
 
