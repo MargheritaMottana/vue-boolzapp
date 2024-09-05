@@ -234,6 +234,10 @@ createApp({
 
             return fullDate;
         },
+
+        deleteMsg(index) {
+            this.contacts[this.activeContactI].messages.splice(index, 1);
+        }
     }
 
 }).mount('#app')

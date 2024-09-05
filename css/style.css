@@ -6,6 +6,10 @@ img {
     width: 50px;
 }
 
+.hover:hover {
+    cursor: pointer;
+}
+
 /* 
 headers 
 */
@@ -115,4 +119,18 @@ chat
 
 .invio:hover {
     cursor: pointer;
+}
+
+.fa-chevron-down:hover {
+    cursor: pointer;
+}
+
+.talktext:hover {
+    .msgDelete {
+        display: inline-block;
+    }
+}
+
+.msgDelete {
+    display: none;
 }

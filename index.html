@@ -167,7 +167,19 @@
 
                                 <!-- testo messaggio -->
                                 <div class="talktext">
-                                    <p> {{msg.message}} </p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <p> {{msg.message}} </p>
+                                        <span class="msgDelete">
+                                            <i class="fa-solid fa-chevron-down ms-2 text-body-tertiary h"
+                                                data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                            <ul class="dropdown-menu">
+                                                <p @click="deleteMsg(index)" class="p-2 hover">Cancella Messaggio
+                                                </p>
+                                            </ul>
+                                        </span>
+                                    </div>
+
                                     <p class="h">
                                         {{msg.date}}
                                         <i class="fa-solid fa-check"></i>
