@@ -26,7 +26,7 @@
 
     <main class="d-flex align-items-center">
 
-        <div id="app" class="container p-0 shadow-lg">
+        <div id="app" class="container p-0 shadow-lg rounded-4">
 
             <div class="row g-0">
 
@@ -189,10 +189,12 @@
                         <!-- keyup per inteccettare l'evento della digitazione (in questo caso quello del tasto "enter")-->
                         <input v-model="inputMsg" @keyup.enter="send()" type="text" class="form-control">
 
-                        <!-- icona mic -->
-                        <!-- se riesco, mostrarne una alla volta in base all'input -->
-                        <i class="fa-solid fa-microphone m-3 ms-4 fs-4 "></i>
-                        <!-- <i class="fa-solid fa-paper-plane ms-4 fs-4"></i> -->
+                        <!-- icona mic + plane-->
+                        <!-- la prima si mostra solo se nell'input non è ancora stato digitato nulla -->
+                        <i v-if="inputMsg == 0" class="fa-solid fa-microphone m-3 ms-4 fs-4"></i>
+                        <!-- la seconda solo se nell'input ci sono dei caratteri + funziona anche per inviare -->
+                        <i v-else="inputMsg > 0" @click="send()"
+                            class="invio fa-solid fa-paper-plane m-3 ms-4 fs-4"></i>
                     </section>
 
                 </div>

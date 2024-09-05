@@ -112,3 +112,7 @@ chat
 .chat-input>i {
     color: #6B7376;
 }
+
+.invio:hover {
+    cursor: pointer;
+}
