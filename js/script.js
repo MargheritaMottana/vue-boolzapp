@@ -196,7 +196,7 @@ createApp({
 
                 // allora pusho il messaggio nell'oggetto
                 this.contacts[this.activeContactI].messages.push({
-                    date: '',
+                    date: this.nowDate(),
                     message: this.inputMsg,
                     status: 'sent'
                 })
@@ -205,7 +205,27 @@ createApp({
                 this.inputMsg = ''
             }
 
-        }
+        },
+
+        // funzione per ottenere la data corrente
+        nowDate() {
+            const now = new Date()
+
+            let fullDate = '';
+            fullDate += now.getDate().toString().padStart(2, '0');
+            fullDate += '/'
+            fullDate += (now.getMonth() + 1).toString().padStart(2, '0');
+            fullDate += '/'
+            fullDate += now.getFullYear();
+            fullDate += ' '
+            fullDate += now.getHours().toString().padStart(2, '0');
+            fullDate += ':'
+            fullDate += now.getMinutes().toString().padStart(2, '0');
+            fullDate += ':'
+            fullDate += now.getSeconds().toString().padStart(2, '0');
+
+            return fullDate;
+        },
     }
 
 }).mount('#app')
